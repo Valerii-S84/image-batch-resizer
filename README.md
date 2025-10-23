@@ -284,8 +284,8 @@ output_file = os.path.join(output_folder, f"{image_file.name}")
 
 ## 📞 Контакти
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Issues: [GitHub Issues](https://github.com/yourusername/image-batch-resizer/issues)
+- GitHub: [Valerii-S84](https://github.com/Valerii-S84)
+- Issues: [GitHub Issues](https://github.com/Valerii-S84/image-batch-resizer/issues)
 
 ---
 
