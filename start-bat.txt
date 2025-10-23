@@ -1,0 +1,94 @@
+@echo off
+chcp 65001 >nul
+title Image Batch Resizer - Quick Start
+
+echo =====================================
+echo   IMAGE BATCH RESIZER
+echo   Quick Start
+echo =====================================
+echo.
+
+REM Check Python
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo ❌ Python not found!
+    echo.
+    echo Please install Python from:
+    echo https://www.python.org/downloads/
+    echo.
+    echo ⚠️  IMPORTANT: Check "Add Python to PATH" during installation
+    echo.
+    pause
+    exit /b 1
+)
+
+echo ✅ Python found
+echo.
+
+REM Check Pillow
+python -c "import PIL" >nul 2>&1
+if errorlevel 1 (
+    echo ⚠️  Pillow not installed
+    echo 📦 Installing Pillow...
+    echo.
+    pip install Pillow
+    if errorlevel 1 (
+        echo.
+        echo ❌ Error installing Pillow
+        echo.
+        echo Try manually:
+        echo pip install Pillow
+        echo.
+        pause
+        exit /b 1
+    )
+    echo.
+    echo ✅ Pillow installed successfully
+    echo.
+)
+
+REM Menu
+:menu
+cls
+echo =====================================
+echo   IMAGE BATCH RESIZER
+echo =====================================
+echo.
+echo Choose version:
+echo.
+echo   1. GUI version (with interface) - recommended
+echo   2. Console version
+echo   3. Exit
+echo.
+set /p choice="Your choice (1, 2 or 3): "
+
+if "%choice%"=="1" (
+    cls
+    echo Starting GUI version...
+    echo.
+    python image-resizer-gui.py
+    goto end
+)
+
+if "%choice%"=="2" (
+    cls
+    echo Starting console version...
+    echo.
+    python image-resizer-script.py
+    goto end
+)
+
+if "%choice%"=="3" (
+    goto end
+)
+
+echo.
+echo ❌ Invalid choice. Try again.
+timeout /t 2 >nul
+goto menu
+
+:end
+echo.
+echo Thank you for using Image Batch Resizer!
+echo.
+pause
